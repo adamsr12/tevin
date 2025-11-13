@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motorcycle Jump</title>
+<style>
+  body {
+    // text-align: center;
+    margin-top: 100px;
+  } #road {
+        width: 864px;
+        height: 324px;
+        background: url("1_background2.png");
+        animation: road 8s linear 10;
+  } /* Motorcycle image position */
+    #motorcycle {
+        position: relative;
+        top: 80px;
+        transition: transform 0.5s ease;
+  } #jump {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: lightgreen;
+      display: block;
+      font-weight: bold;
+  } /* Jump animation */
+    .jumping {
+        animation: jump 0.8s ease;
+  } /* Keyframes for jump up and down */
+    @keyframes jump {
+        0%   { transform: translateY(0); }
+        40%  { transform: translateY(-100px); transform: rotateZ(-5deg); }
+        60%  { transform: translateY(-100px); }
+        100% { transform: translateY(0); transform: rotateZ(5deg); }
+    } @keyframes road {
+        0% {background-position: 0 0;}
+        100% {background-position: -384px 0;}
+    }
+</style>
+</head>
+<body>
+<div id="road">
+  <button id="jump">Jump!</button>
+  <img id="motorcycle" src="motorcycle.png" alt="Motorcycle">
+</div>
+  <script>
+    const motorcycle = document.getElementById('motorcycle');
+    const button = document.getElementById('jump');
+
+    button.addEventListener('click', () => {
+      // Prevent double animation trigger
+      if (!motorcycle.classList.contains('jumping')) {
+        motorcycle.classList.add('jumping');
+
+        // Remove the class after animation ends so it can be reused
+        motorcycle.addEventListener('animationend', () => {
+          motorcycle.classList.remove('jumping');
+        }, { once: true });
+      }
+    });
+  </script>
+
+</body>
+</html>
