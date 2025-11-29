@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Menu Test</title>
+<style>
+    * {margin: 0; padding: 0}
+    @font-face {
+        font-family: Candara;
+        src: url("Candara.ttf");
+    } h1 {
+        text-align: center;
+        font-family: Candara;
+        margin: 24px;
+    } ul {
+        width: 750px;
+        // background: lavender;
+        margin: 6px auto;
+        display: grid;
+        grid-template: auto / repeat(5,auto);
+        text-align: center;
+        font: 14pt/2.3em Candara;
+        position: relative;
+        z-index: 1;
+    } li {
+        list-style: none;
+        background: gainsboro;
+        height: 50px;
+    } li:hover {
+        background: paleturquoise;
+    } ul li ul {
+        width: 100%;
+        display: grid;
+        grid-template: repeat(5,auto) / auto;
+        visibility: hidden;
+    } ul li:hover ul {
+        visibility: visible;
+    } img {
+        width: 750px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        z-index: 0;
+    }
+</style>
+</head>
+
+<body>
+    <h1>Menu Test with Z-Index</h1>
+    <ul>
+        <li>Link 1</li>
+        <li>Link 2</li>
+        <li>Link 3</li>
+        <li>Link 4</li>
+        <li>Link 5
+            <ul>
+                <li>Sublink A</li>
+                <li>Sublink B</li>
+                <li>Sublink C</li>
+                <li>Sublink D</li>
+                <li>Sublink E</li>
+            </ul>
+        </li>
+     </ul>
+     <img src="beach.jpg" />
+</body>
+</html>
